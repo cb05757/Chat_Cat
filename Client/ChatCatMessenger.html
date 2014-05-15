@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>ChatCat Messenger</title>
+	<link rel="stylesheet" href="css/style.css" type="text/css">
+
+	<!-- Web Socket -->
+	<script type="text/javascript" src="js/webSocket.js"></script>
+
+	<!-- Paint -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script><!-- causing page to reload on submit -->
+	<script type="text/javascript" src="paint/dibujo.js" ></script>
+	<script type="text/javascript" src="paint/draw.js"></script>
+	<script type="text/javascript" src="paint/farbtastic/farbtastic.js"></script>
+	<script type="text/javascript" src="paint/jscolor/jscolor.js"></script>
+	<link rel="stylesheet" href="paint/farbtastic/farbtastic.css" type="text/css" />
+
+
+
+	<script type="text/javascript">
+
+      	function eraser(){
+      		document.getElementById("color").value = "#FFFFFF";
+      	}
+	</script>
+
+</head>
+
+<body onload="pageLoaded()">
+<div id="grad">
+	<div id="wrapper">
+
+	    <div id="header">
+        	<img src="images/ChatCatLogo.png" alt="Cat" width="600" height="208">
+    	</div>
+
+		<div id="sidebar">
+            <form>
+                <input type="hidden" name="url" id="url"> <!-- finds the username and room name -->
+            </form>
+           <script type="text/javascript">
+
+                var locate = window.location
+                document.forms[0].url.value = locate
+
+                var text = document.forms[0].url.value
+
+                roomChoice = delineateRoomChoice(text);
+                username = delineateUserName(text);
+                roomName = delineateRoomName(text);
+                delineate();
+
+           </script>
+
+
+			 
+         
+				<textarea readonly id="recievedMSG" name="recievedMSG" rows="30" cols="24"></textarea> <!-- read only txt area for the msg to be displayed -->
+				<br>
+				<input autofocus type="text" id="sentMSG" name="sentMSG">
+
+				<button id="send" onclick="sendToServer();">Send</button>
+			
+			
+
+		</div>
+
+		<div id="content">
+			<canvas id="myCanvas" width="680" height="600"></canvas>
+
+			<script type="text/javascript">
+			var c=document.getElementById("myCanvas");
+            var ctx=c.getContext("2d");
+
+			ctx.fillStyle="#FFFFFF";
+			ctx.fillRect(0, 0, c.width, c.height);
+			</script>
+			
+
+		</div>
+
+		<div id="paintTool">
+			<br>
+			<div class="center">
+        	<div id="colorpicker"></div>
+
+			<br>
+			<input type="text" id="color" name="color" />
+				
+			<br>
+			Thickness:
+			<select id="brushThick" style="width: 60px">
+				<option value="1">1</option>
+				<option value="3">3</option>
+				<option value="5">5</option>
+				<option value="7">7</option>
+				<option value="9" selected="selected">9</option>
+				<option value="11">11</option>
+				<option value="14">14</option>
+				<option value="20">20</option>
+				<option value="30">30</option>
+				<option value="45">45</option>
+				<option value="70">70</option>
+			</select>
+			<br>
+			<br>
+			
+			<button id="btnDelete" class="btn btn-danger">Clear Canvas</button>
+
+			<br>
+
+			<button id="btnErase" class="btn btn-danger">Eraser</button>
+			<br>
+			<button id="btnSubmit" onclick="sendToServerPaint()">Submit Canvas</button>
+			<br>
+
+			<img id="saveImage" style="display:none;">
+
+			</div>
+    	</div>
+
+    	<div id="footer">
+    		<br>
+    	</div>
+
+
+
+	</div>
+</div>
+</body>
+</html>

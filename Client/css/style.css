@@ -1,0 +1,92 @@
+
+	
+	body{
+		background-color: #dddddd;
+		margin:0px;
+	}
+
+	#wrapper { 
+		width:1100px; /* was 1010 */
+		margin-left:auto;
+		margin-right:auto; 
+		font-family:Georgia, Serif;
+		/*background-color:#41A0CF;*/
+		color:#B30000;
+		min-height: 600px;
+
+	}
+
+	#header {
+		color:#1A3C84;
+		font-family:Arial, sans-serif;
+		/*background-color:#02418E;*/
+		text-align: center;
+
+		margin-bottom:0;
+		padding-bottom: 5px;
+	}
+	
+	#sidebar{
+		width:220px;
+		float:right;
+		height:605px;
+	}
+	
+	#content{
+		font-family:Times, "Times New Roman", serif;
+		color:#027649;
+		background-color:#FFFFFF;
+		float:right;
+		width:680px;
+/*
+		padding-left: 10px;*/ /* remove padding */
+	/*	padding-right: 10px;*/
+
+		height: 605px;
+
+	}
+
+	#paintTool{
+		float:right;
+		width:200px;
+		background-color: #E2E2E2;
+		color: black;
+		height: 605px;
+	}
+
+	canvas{
+		padding: 0;
+		margin: 0;
+	}
+
+	#footer{
+		clear:both;
+		text-align: center;
+	}
+
+	textarea{
+		outline: none;
+		resize: none;
+	}
+
+	#recievedMSG{
+		height:525px;
+		width:200px;
+	}
+
+	#grad{
+		background: linear-gradient(#548392,#dddddd);
+	}
+
+	#sentMSG{
+		padding-bottom: 10.25px;
+	}
+
+	.center{
+		margin-left: auto;
+ 		margin-right: auto;
+ 		display: block;
+ 		text-align: center;
+	}
+
+

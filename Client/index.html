@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" >
+	<head>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" type="text/css" href="css/stdtheme.css"/>
+		<title>ChatCat Homepage</title>
+
+		<script type="text/javascript" src="js/prototype.js"></script>
+
+		<script type="text/javascript">
+
+			function confirmSubmit() { // dont allow spaces or symbols
+
+				if($("username").value != ""){
+					if($("roomName").value != "" && $("roomChoice").value != "none"){
+    					alert("You need to choose a chat room or create one. Not Both!");
+    					return false;
+    				}else if($("roomName").value != "" || $("roomChoice").value != "none"){
+    					if(!illegalChar("username") || !illegalChar("roomName") || !illegalChar("roomChoice")){
+    						return false;
+    					}
+    					return true;
+    				} else{
+    					alert("You need to choose a chat room or create one");
+    					return false;
+    				}
+    			} else{
+    				alert("You need to pick a username");
+    				return false;
+    			}
+			}
+
+			function illegalChar(txtField){
+				var splChars = "*|,\":<>[]{}`\';()@&$#%! ";
+				for (var i = 0; i < $(txtField).value.length; i++) {
+    				if (splChars.indexOf($(txtField).value.charAt(i)) != -1){
+    					alert ("Illegal characters detected!");
+    					return false;
+					}
+				}
+				return true;
+			}
+
+
+			function pageLoaded(){ 
+				
+			}
+
+
+		</script>
+	</head>
+	
+	<body style="position: relative; top: 0px;" onload="pageLoaded()">
+		<div id="wrapper">
+			<div id="header">
+				<div id="top_logo">
+					<img src="images/ChatCatLogo.png" alt="Cat" width="600" height="208">
+				</div>
+			</div>
+		
+			<div id="content">
+				<br>
+				<h3>Join an existing chat room or start your own!</h3>
+				
+				<form method="get" action="ChatCatMessenger.html" onsubmit="return confirmSubmit()">
+				<fieldset>
+					<label for="roomChoice">Choose a room:</label><select id="roomChoice" name="roomChoice">
+						<option value="none"></option>									<!-- these will be pulled dynamicaly from the server -->
+  						<option value="Math">Math</option>
+  						<option value="History">History</option>
+  						<option value="PP1">PP1</option>
+  						<option value="PP2">PP2</option>
+					</select>
+
+					<br>
+					Or
+					<br>
+						<label for="roomName">Create your Own:</label><input type="text" id="roomName" name="roomName" class="txt">
+					<br>
+					And
+					<br>
+						<label for="username">Choose a username:</label><input type="text" id="username" name="username" class="txt">
+					<br>
+					<br>
+					<input type="submit" value="Enter"> <!-- Hand off nickname and chat room name to the server on connect -->
+				</fieldset>
+				</form>
+
+				
+			</div> 
+		</div>
+	</body>
+</html>
